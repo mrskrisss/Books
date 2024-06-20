@@ -1,5 +1,7 @@
 import { IBookPreview } from '../../types/ICardPreview'
 import Back from '../../icons/back'
+import Heart from '../../icons/heart'
+import './index.scss'
 
 export function CardPreview (props: IBookPreview) {
   return (
@@ -10,9 +12,12 @@ export function CardPreview (props: IBookPreview) {
                 <div className="title-card-preview">{props.title}</div>
             </div>
             <div className="information-card-preview">
-            <div className="wrap-img-card-preview">
-                <img className="img-card-preview" src={props.image} />
-            </div>
+                <div className="wrap-img-card-preview">
+                    <div className="wrap-heart">
+                        <Heart />
+                    </div>
+                    <img className="img-card-preview" src={props.image} />
+                </div>
                 <div className="description-card-preview">
                     <div className="wrap-price-card-preview">
                         <p className="price-card-preview">{props.price}</p>
@@ -27,16 +32,16 @@ export function CardPreview (props: IBookPreview) {
                             <p className="description name-publisher">{props.publisher}</p>
                         </div>
                         <div className="wrap-info">
-                            <p className="language publisher">Language</p>
+                            <p className="name language">Language</p>
                             <p className="description name-language">English</p>
                         </div>
                         <div className="wrap-info">
-                            <p className="format publisher">Format</p>
+                            <p className="name format">Format</p>
                             <p className="description name-format">Paper book / book (PDF)</p>
                         </div>
-                    </div>
-                    <div className="wrap-button">
-                        <button className="button-add-cart">ADD TO CARD</button>
+                        <div className="wrap-button">
+                            <button className="button-add-cart">ADD TO CARD</button>
+                        </div>
                     </div>
                 </div>
             </div>

@@ -24,7 +24,7 @@ export function Book () {
 
   return (
     <>
-        <CardPreview isbn13={book.isbn13}/>
+        <CardPreview key={book.isbn13} isbn13={book.isbn13} image={book.image} title={book.title} authors={book.authors} publisher={book.publisher} desc={book.desc} price={book.price}/>
     </>
   )
 }
