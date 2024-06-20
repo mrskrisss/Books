@@ -11,7 +11,6 @@ export function Book () {
   const book = useSelector((state: RootState) => state.book.item)
 
   useEffect(() => {
-    console.log(typeof book)
     if (!book || (book.isbn13 as string) !== bookId) return
 
     dispatch(fetchBook(bookId))
@@ -25,7 +24,7 @@ export function Book () {
 
   return (
     <>
-        <CardPreview />
+        <CardPreview isbn13={book.isbn13}/>
     </>
   )
 }

@@ -15,7 +15,7 @@ const initialState: BookState = {
 }
 
 // Thunks
-export const fetchBook = createAsyncThunk('/books/{isbn13}/fetchBook', async (isbn13: string, { rejectWithValue }) => {
+export const fetchBook = createAsyncThunk('/book/fetchBook', async (isbn13: string, { rejectWithValue }) => {
   try {
     return await requestBook(isbn13)
   } catch (e) {
