@@ -1,4 +1,4 @@
-import { createSlice, createAsyncThunk } from '@reduxjs/toolkit'
+import { createSlice, createAsyncThunk, PayloadAction } from '@reduxjs/toolkit'
 import { requestBook } from '../services/book'
 import { IBookPreview } from '../types/ICardPreview'
 
@@ -15,7 +15,7 @@ const initialState: BookState = {
 }
 
 // Thunks
-export const fetchBook = createAsyncThunk('/book/fetchBook', async (isbn13: string, { rejectWithValue }) => {
+export const fetchBook = createAsyncThunk('/books/fetchBook', async (isbn13: string, { rejectWithValue }) => {
   try {
     return await requestBook(isbn13)
   } catch (e) {
@@ -23,10 +23,15 @@ export const fetchBook = createAsyncThunk('/book/fetchBook', async (isbn13: stri
   }
 })
 
-const BookSlice = createSlice({
+const bookSlice = createSlice({
   name: 'book',
   initialState,
   reducers: {
+    toggleFavoriteById: (state, action: PayloadAction<number>) => {
+      const isbn13 = action.payload
+      const index = state.item.find(book => book.isbn13 === isbn13)
+      state.item[index].isFavorite = !state.item[index].isFavorite
+    }
   },
   extraReducers: builder => {
     builder
@@ -44,4 +49,5 @@ const BookSlice = createSlice({
   }
 })
 
-export const bookReducer = BookSlice.reducer
+export const { toggleFavoriteById } = bookSlice.actions
+export const bookReducer = bookSlice.reducer

@@ -1,10 +1,16 @@
 import React from 'react'
+// import useLocalStorageState from 'use-local-storage-state'
 import Heart from '../../icons/heart'
-import Basket from '../../icons/basket'
 import Search from '../../icons/search'
+import { CartWidget } from '../cartWidget'
+// import { IBookPreview } from '../../types/ICardPreview'
 import './index.scss'
 
 export const Header: React.FC = () => {
+  // const [cart] = useLocalStorageState<IBookPreview>('cart', {})
+
+  // const booksCount: number = Object.keys(cart || {}).length
+
   return (
     <header className="nav">
       <div className="nav-container">
@@ -20,7 +26,7 @@ export const Header: React.FC = () => {
               <Heart />
           </div>
           <div className="wrapper-basket">
-              <Basket />
+              <CartWidget />
           </div>
         </div>
       </div>
