@@ -22,13 +22,13 @@ export function ListNewBooks () {
 
     if (error) return <div className="alert alert-danger">{error}</div>
 
-    return <>{books?.map((book) => <CardNewBook key={book.isbn13} isbn13={book.isbn13} image={book.image} title={book.title} subtitle={book.subtitle} price={book.price}/>)}</>
+    return <>{books?.map((book) => <CardNewBook key={book.isbn13} isbn13={book.isbn13} url={book.url} name={book.name} message={book.message} image={book.image} title={book.title} subtitle={book.subtitle} price={book.price}/>)}</>
   }
 
   return (
     <>
       <Title>New Releases Books</Title>
-      <div className="wrapper-cards" >
+      <div className="wrapper-cards" style={{ display: 'flex', flexDirection: 'row', flexWrap: 'wrap', justifyContent: 'space-around' }} >
         {renderBooks()}
       </div>
     </>

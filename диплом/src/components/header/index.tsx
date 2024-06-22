@@ -1,8 +1,8 @@
 import React from 'react'
-// import useLocalStorageState from 'use-local-storage-state'
 import Heart from '../../icons/heart'
 import Search from '../../icons/search'
 import { CartWidget } from '../cartWidget'
+import { NavLink } from 'react-router-dom'
 // import { IBookPreview } from '../../types/ICardPreview'
 import './index.scss'
 
@@ -10,6 +10,7 @@ export const Header: React.FC = () => {
   // const [cart] = useLocalStorageState<IBookPreview>('cart', {})
 
   // const booksCount: number = Object.keys(cart || {}).length
+  const navLinkClass = ({ isActive }) => isActive ? 'nav-link active' : 'nav-link'
 
   return (
     <header className="nav">
@@ -22,9 +23,11 @@ export const Header: React.FC = () => {
           <Search />
         </div>
         <div className="nav-links">
-          <div className="wrapper-heart">
-              <Heart />
-          </div>
+          <NavLink className={navLinkClass} to="/favorite">
+            <div className="wrapper-heart">
+                <Heart />
+            </div>
+          </NavLink>
           <div className="wrapper-basket">
               <CartWidget />
           </div>

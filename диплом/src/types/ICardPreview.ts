@@ -13,4 +13,7 @@ export interface IBookPreview {
     price?: string
     image?: string
     url?: string
+    name?: string
+    message?: string
+    isFavorite?: boolean
 }

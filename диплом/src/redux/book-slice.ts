@@ -1,11 +1,11 @@
-import { createSlice, createAsyncThunk, PayloadAction } from '@reduxjs/toolkit'
+import { createSlice, createAsyncThunk } from '@reduxjs/toolkit'
 import { requestBook } from '../services/book'
 import { IBookPreview } from '../types/ICardPreview'
 
 export interface BookState {
   item: IBookPreview,
   isLoading: boolean,
-  error: string | null | undefined,
+  error: string | null | undefined
 }
 
 const initialState: BookState = {
@@ -15,7 +15,7 @@ const initialState: BookState = {
 }
 
 // Thunks
-export const fetchBook = createAsyncThunk('/books/fetchBook', async (isbn13: string, { rejectWithValue }) => {
+export const fetchBook = createAsyncThunk('books/fetchBook', async (isbn13: string, { rejectWithValue }) => {
   try {
     return await requestBook(isbn13)
   } catch (e) {
@@ -27,10 +27,14 @@ const bookSlice = createSlice({
   name: 'book',
   initialState,
   reducers: {
-    toggleFavoriteById: (state, action: PayloadAction<number>) => {
+    toggleFavoriteById: (state, action) => {
       const isbn13 = action.payload
-      const index = state.item.find(book => book.isbn13 === isbn13)
-      state.item[index].isFavorite = !state.item[index].isFavorite
+      const book = state.item[isbn13]
+      console.log(book)
+      if (book) {
+        book.isFavorite = !book.isFavorite
+      }
+      console.log(book)
     }
   },
   extraReducers: builder => {
@@ -40,6 +44,7 @@ const bookSlice = createSlice({
       })
       .addCase(fetchBook.fulfilled, (state, action) => {
         state.isLoading = false
+        console.log(action.payload)
         state.item = action.payload
       })
       .addCase(fetchBook.rejected, (state, action) => {

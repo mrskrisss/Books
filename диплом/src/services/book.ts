@@ -1,8 +1,8 @@
 import { client } from '../api/client'
 import { newBooksEndpoint, bookEndpoint } from '../api/endpoint'
 
-async function requestBooks (params = {}) {
-  const { data } = await client.get(newBooksEndpoint, { params })
+async function requestBooks () {
+  const { data } = await client.get(`${newBooksEndpoint}`)
   return data
 }
 

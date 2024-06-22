@@ -23,7 +23,7 @@ export const fetchBooks = createAsyncThunk('new/fetchBooks', async (_, { rejectW
   }
 })
 
-export const booksSlice = createSlice({
+const booksSlice = createSlice({
   name: 'books',
   initialState,
   reducers: {
@@ -35,6 +35,7 @@ export const booksSlice = createSlice({
       })
       .addCase(fetchBooks.fulfilled, (state, action) => {
         state.isLoading = false
+        console.log(action.payload)
         state.list = action.payload.books
       })
       .addCase(fetchBooks.rejected, (state, action) => {

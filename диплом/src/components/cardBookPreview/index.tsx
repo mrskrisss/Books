@@ -1,9 +1,18 @@
+import { useDispatch } from 'react-redux'
+import { AppDispatch } from '../../redux/store'
 import { IBookPreview } from '../../types/ICardPreview'
+import { toggleFavoriteById } from '../../redux/book-slice'
 import Back from '../../icons/back'
 import Heart from '../../icons/heart'
 import './index.scss'
 
 export function CardPreview (props: IBookPreview) {
+  const dispatch = useDispatch<AppDispatch>()
+
+  const handleClickHeart = (props): void => {
+    console.log('нажалось')
+    dispatch(toggleFavoriteById(props.isbn13))
+  }
   return (
     <>
         <div className="wrapper-card-preview" id={props.isbn13}>
@@ -13,9 +22,9 @@ export function CardPreview (props: IBookPreview) {
             </div>
             <div className="information-card-preview">
                 <div className="wrap-img-card-preview">
-                    <div className="wrap-heart">
+                    <button className="wrap-heart" onClick={handleClickHeart}>
                         <Heart />
-                    </div>
+                    </button>
                     <img className="img-card-preview" src={props.image} />
                 </div>
                 <div className="description-card-preview">
