@@ -3,7 +3,7 @@ import { requestBook } from '../services/book'
 import { IBookPreview } from '../types/ICardPreview'
 
 export interface BookState {
-  item: IBookPreview,
+  item: { [isbn13: string]: IBookPreview & { isFavorite: boolean } },
   isLoading: boolean,
   error: string | null | undefined
 }
@@ -29,10 +29,10 @@ const bookSlice = createSlice({
   reducers: {
     toggleFavoriteById: (state, action) => {
       const isbn13 = action.payload
-      const book = state.item[isbn13]
-      if (book) {
-        book.isFavorite = !book.isFavorite
+      if (state.item[isbn13]) {
+        state.item[isbn13].isFavorite = !state.item[isbn13].isFavorite
       }
+      console.log(action.payload.isFavorite)
     }
   },
   extraReducers: builder => {
@@ -42,8 +42,15 @@ const bookSlice = createSlice({
       })
       .addCase(fetchBook.fulfilled, (state, action) => {
         state.isLoading = false
-        console.log(action.payload)
-        state.item = action.payload
+        console.log(action.payload.isFavorite)
+        state.item = {
+          ...state.item,
+          [action.payload.isbn13]: {
+            ...action.payload,
+            isFavorite: false
+          }
+        }
+        // state.item[action.payload.isbn13] = { ...action.payload, isFavorite: false }
       })
       .addCase(fetchBook.rejected, (state, action) => {
         state.isLoading = false

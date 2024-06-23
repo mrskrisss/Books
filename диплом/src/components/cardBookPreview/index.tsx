@@ -9,9 +9,9 @@ import './index.scss'
 export function CardPreview (props: IBookPreview) {
   const dispatch = useDispatch<AppDispatch>()
 
-  const handleClickHeart = (props): void => {
-    console.log('Click')
-    dispatch(toggleFavoriteById(props.isbn13))
+  const handleClickHeart = (isbn13) => {
+    console.log(isbn13)
+    dispatch(toggleFavoriteById(isbn13))
   }
   return (
     <>
@@ -22,7 +22,7 @@ export function CardPreview (props: IBookPreview) {
             </div>
             <div className="information-card-preview">
                 <div className="wrap-img-card-preview">
-                    <button className="wrap-heart" onClick={handleClickHeart}>
+                    <button className="wrap-heart" onClick={() => { handleClickHeart(props.isbn13) }}>
                         <Heart />
                     </button>
                     <img className="img-card-preview" src={props.image} />
