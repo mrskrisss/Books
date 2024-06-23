@@ -1,5 +1,5 @@
 import { client } from '../api/client'
-import { newBooksEndpoint, bookEndpoint } from '../api/endpoint'
+import { newBooksEndpoint, bookEndpoint, searchEndpoint } from '../api/endpoint'
 
 async function requestBooks () {
   const { data } = await client.get(`${newBooksEndpoint}`)
@@ -11,4 +11,9 @@ async function requestBook (isbn13: string) {
   return data
 }
 
-export { requestBooks, requestBook }
+async function requestSearchBooks (params = {}) {
+  const { data } = await client.get(searchEndpoint, { params })
+  return data
+}
+
+export { requestBooks, requestBook, requestSearchBooks }

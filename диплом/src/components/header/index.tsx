@@ -1,6 +1,6 @@
 import React from 'react'
 import Heart from '../../icons/heart'
-import Search from '../../icons/search'
+import { SearchForm } from '../searchForm'
 import { CartWidget } from '../cartWidget'
 import { NavLink } from 'react-router-dom'
 // import { IBookPreview } from '../../types/ICardPreview'
@@ -19,8 +19,7 @@ export const Header: React.FC = () => {
           <span className="logo">BOOKSTORE</span>
         </div>
         <div className="container-search">
-          {/* <SearchForm /> */}
-          <Search />
+          <SearchForm />
         </div>
         <div className="nav-links">
           <NavLink className={navLinkClass} to="/favorite">

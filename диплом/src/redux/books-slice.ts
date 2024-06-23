@@ -1,5 +1,5 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit'
-import { requestBooks } from '../services/book'
+import { requestBooks, requestSearchBooks } from '../services/book'
 import { ICardBook } from '../types/ICardBook'
 
 export interface BooksState {
@@ -23,6 +23,15 @@ export const fetchBooks = createAsyncThunk('new/fetchBooks', async (_, { rejectW
   }
 })
 
+export const fetchSearchBooks = createAsyncThunk('search/fetchSearchBooks', async (params: { query: string }, { rejectWithValue }) => {
+  try {
+    const { query } = params
+    return await requestSearchBooks({ query })
+  } catch (e) {
+    return rejectWithValue((e as Error).message)
+  }
+})
+
 const booksSlice = createSlice({
   name: 'books',
   initialState,
@@ -35,10 +44,21 @@ const booksSlice = createSlice({
       })
       .addCase(fetchBooks.fulfilled, (state, action) => {
         state.isLoading = false
-        console.log(action.payload)
         state.list = action.payload.books
       })
       .addCase(fetchBooks.rejected, (state, action) => {
+        state.isLoading = false
+        state.error = action.error.message
+      })
+      .addCase(fetchSearchBooks.pending, state => {
+        state.isLoading = true
+      })
+      .addCase(fetchSearchBooks.fulfilled, (state, action) => {
+        state.isLoading = false
+        console.log(action.payload)
+        state.list = action.payload.books
+      })
+      .addCase(fetchSearchBooks.rejected, (state, action) => {
         state.isLoading = false
         state.error = action.error.message
       })

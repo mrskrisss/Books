@@ -8,4 +8,5 @@ export interface ICardBook extends Error {
     name: string
     message: string
     isFavorite?: boolean
+    query?: string
 }
