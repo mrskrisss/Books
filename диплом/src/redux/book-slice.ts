@@ -30,11 +30,9 @@ const bookSlice = createSlice({
     toggleFavoriteById: (state, action) => {
       const isbn13 = action.payload
       const book = state.item[isbn13]
-      console.log(book)
       if (book) {
         book.isFavorite = !book.isFavorite
       }
-      console.log(book)
     }
   },
   extraReducers: builder => {

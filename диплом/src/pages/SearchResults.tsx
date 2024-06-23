@@ -15,7 +15,9 @@ export const SearchResults = () => {
   const isLoading = useSelector((state: RootState) => state.books.isLoading)
 
   useEffect(() => {
-    dispatch(fetchSearchBooks({ query: search }))
+    if (search) {
+      dispatch(fetchSearchBooks({ query: search }))
+    }
   }, [search, dispatch])
 
   function renderBooks () {
@@ -25,7 +27,7 @@ export const SearchResults = () => {
 
     if (error) return <div className="alert alert-danger">{error}</div>
 
-    return books?.map(book => <CardNewBook key={book.isbn13} isbn13={book.isbn13} query={book.query} url={book.url} name={book.name} message={book.message} image={book.image} title={book.title} subtitle={book.subtitle} price={book.price} />)
+    return books?.map(book => <CardNewBook key={book.isbn13} isbn13={book.isbn13} name={book.name} message={book.message} image={book.image} title={book.title} subtitle={book.subtitle} price={book.price} />)
   }
 
   return (

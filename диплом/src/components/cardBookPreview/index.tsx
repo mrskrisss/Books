@@ -10,7 +10,7 @@ export function CardPreview (props: IBookPreview) {
   const dispatch = useDispatch<AppDispatch>()
 
   const handleClickHeart = (props): void => {
-    console.log('нажалось')
+    console.log('Click')
     dispatch(toggleFavoriteById(props.isbn13))
   }
   return (

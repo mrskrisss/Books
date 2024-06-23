@@ -44,7 +44,9 @@ const booksSlice = createSlice({
       })
       .addCase(fetchBooks.fulfilled, (state, action) => {
         state.isLoading = false
-        state.list = action.payload.books
+        state.list = action.payload.books.map(book => {
+          return { ...book, isFavorite: false }
+        })
       })
       .addCase(fetchBooks.rejected, (state, action) => {
         state.isLoading = false
@@ -56,7 +58,7 @@ const booksSlice = createSlice({
       .addCase(fetchSearchBooks.fulfilled, (state, action) => {
         state.isLoading = false
         console.log(action.payload)
-        state.list = action.payload.books
+        state.list = action.payload
       })
       .addCase(fetchSearchBooks.rejected, (state, action) => {
         state.isLoading = false
