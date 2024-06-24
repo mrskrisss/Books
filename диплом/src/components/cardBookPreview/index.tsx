@@ -4,15 +4,19 @@ import { IBookPreview } from '../../types/ICardPreview'
 import { toggleFavoriteById } from '../../redux/book-slice'
 import Back from '../../icons/back'
 import Heart from '../../icons/heart'
+import { useFavorite } from '../../hooks/useFavorite'
 import './index.scss'
 
 export function CardPreview (props: IBookPreview) {
   const dispatch = useDispatch<AppDispatch>()
+  const { toggleFavorite, checkFavorite } = useFavorite()
 
   const handleClickHeart = (isbn13) => {
     console.log(isbn13)
+    toggleFavorite(props)
     dispatch(toggleFavoriteById(isbn13))
   }
+
   return (
     <>
         <div className="wrapper-card-preview" id={props.isbn13}>
@@ -23,7 +27,7 @@ export function CardPreview (props: IBookPreview) {
             <div className="information-card-preview">
                 <div className="wrap-img-card-preview">
                     <button className="wrap-heart" onClick={() => { handleClickHeart(props.isbn13) }}>
-                        <Heart />
+                        <Heart fill={checkFavorite(props.isbn13) ? 'red' : 'currentColor' } />
                     </button>
                     <img className="img-card-preview" src={props.image} />
                 </div>

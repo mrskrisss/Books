@@ -17,8 +17,8 @@ export function SearchForm () {
   }
 
   return (
-    <form className="search-form" role="query" onSubmit={handleSubmit}>
-      <input type="query" className="form-control" placeholder="Search..." style={{ width: '300px', height: '25px' }} onChange={handleChangeSearch} value={query} />
+    <form className="search-form" role="search" onSubmit={handleSubmit}>
+      <input type="search" className="form-control" placeholder="Search..." style={{ width: '300px', height: '25px' }} onChange={handleChangeSearch} value={query} />
       <button type="submit" className="btn btn-warning"><Search /></button>
     </form>
   )

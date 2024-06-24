@@ -26,7 +26,7 @@ export const fetchBooks = createAsyncThunk('new/fetchBooks', async (_, { rejectW
 export const fetchSearchBooks = createAsyncThunk('search/fetchSearchBooks', async (params: { query: string }, { rejectWithValue }) => {
   try {
     const { query } = params
-    return await requestSearchBooks({ query })
+    return await requestSearchBooks({ q: query })
   } catch (e) {
     return rejectWithValue((e as Error).message)
   }

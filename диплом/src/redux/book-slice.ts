@@ -29,10 +29,16 @@ const bookSlice = createSlice({
   reducers: {
     toggleFavoriteById: (state, action) => {
       const isbn13 = action.payload
-      if (state.item[isbn13]) {
-        state.item[isbn13].isFavorite = !state.item[isbn13].isFavorite
+      console.log(action.payload.isbn13)
+      const booksFavorite = state.item[isbn13]
+      console.log(booksFavorite)
+      if (booksFavorite) {
+        state.item[isbn13] = {
+          ...booksFavorite,
+          isFavorite: !booksFavorite.isFavorite
+        }
+        console.log(booksFavorite.isFavorite)
       }
-      console.log(action.payload.isFavorite)
     }
   },
   extraReducers: builder => {
@@ -42,15 +48,11 @@ const bookSlice = createSlice({
       })
       .addCase(fetchBook.fulfilled, (state, action) => {
         state.isLoading = false
-        console.log(action.payload.isFavorite)
-        state.item = {
-          ...state.item,
-          [action.payload.isbn13]: {
-            ...action.payload,
-            isFavorite: false
-          }
-        }
-        // state.item[action.payload.isbn13] = { ...action.payload, isFavorite: false }
+        console.log(action.payload)
+        const bookData = action.payload
+        const booksFavorite = { ...bookData, isFavorite: false }
+        state.item = booksFavorite
+        console.log(booksFavorite)
       })
       .addCase(fetchBook.rejected, (state, action) => {
         state.isLoading = false

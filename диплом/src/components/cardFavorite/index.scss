@@ -1,29 +1,36 @@
 .wrapper-card-favorite {
-    max-width: 1120px;
+    max-width: 100%;
     border-bottom: 1px solid #E7E7E7;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    padding-bottom: 50px;
+    padding-bottom: 20px;
+    margin-bottom: 20px;
+}
+.wrapper-card-favorite:last-child{
+    margin-bottom: 0px;
+    border-bottom: 1px solid #FFFFFF;
 }
 .wrap-img-favorite {
-    max-width: 256px;
-    background-color: blanchedalmond;
+    max-width: 140px;
+    background-color: aliceblue;
     overflow: hidden;
+    margin-right: 30px;
 }
 .img-favorite {
     width: 100%;
     height: auto;
 }
 .card-information-favorite {
-    margin-top: 38px;
+    margin-top: 20px;
+    width: 875px;
 }
 .card-name-favorite {
     margin-bottom: 8px;
-    max-width: 450px;
+    max-width: 600px;
 }
 .name-book-favorite {
-    font-size: 24px;
+    font-size: 18px;
     line-height: 32px;
     color: #313037;
     font-weight: 700;
@@ -32,7 +39,7 @@
     margin-bottom: 24px;
 }
 .author-and-year-favorite {
-    font-size: 16px;
+    font-size: 14px;
     line-height: 24px;
     color: #A8A8A8;
     font-weight: 400;
@@ -40,10 +47,13 @@
 .price-favorite {
     font-weight: 700;
     line-height: 32px;
-    font-size: 24px;
+    font-size: 18px;
     color: #313037;
 }
 .button-like {
     max-width: 56px;
+    max-height: 56px;
+    display: flex;
+    justify-content: flex-end;
     margin: auto;
 }

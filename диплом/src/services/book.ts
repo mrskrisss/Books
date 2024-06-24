@@ -12,8 +12,9 @@ async function requestBook (isbn13: string) {
 }
 
 async function requestSearchBooks (params = {}) {
+  console.log(params)
   const { data } = await client.get(searchEndpoint, { params })
-  return data
+  return data.books
 }
 
 export { requestBooks, requestBook, requestSearchBooks }

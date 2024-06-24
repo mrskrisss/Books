@@ -7,6 +7,6 @@ export interface ICardBook extends Error {
     url?: string
     name: string
     message: string
-    isFavorite?: boolean
     query?: string
+    isFavorite?: boolean
 }
