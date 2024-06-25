@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react'
 import { useSelector } from 'react-redux'
 import { RootState } from '../redux/store'
-import { CardPurchases } from '../components/cardPurchases'
+import { CardPurchases } from '../components/cardPuschases'
 import { Title } from '../components/title'
 import { usePurchases } from '../hooks/usePurchases'
 import { BackButton } from '../components/backButton'
@@ -15,13 +15,7 @@ export const Purchases = () => {
   useEffect(() => {
     setState(getPurchases())
   }, [])
-
-  // useEffect(() => {
-  //   if (state) return
-  //   console.log(state)
-  //   dispatch(fetchBooks())
-  // }, [dispatch])
-
+  
   const renderBooks = () => {
     if (!Array.isArray(state)) return <div>Not Found</div>
 

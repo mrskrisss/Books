@@ -1,4 +1,3 @@
-import React from 'react'
 import { useDispatch } from 'react-redux'
 import { AppDispatch } from '../../redux/store'
 import { useFavorite } from '../../hooks/useFavorites'
@@ -8,7 +7,7 @@ import Heart from '../../icons/heart'
 
 import './index.scss'
 
-export const CardFavorite: React.FC<ICardBook> = (props) => {
+export const CardFavorite = (props: ICardBook) => {
   const dispatch = useDispatch<AppDispatch>()
   const { removeFromFavorite, checkFavorite } = useFavorite()
 
