@@ -19,9 +19,14 @@ export function useFavorite () {
     localStorage.setItem('favorite', JSON.stringify(favorite))
   }
   function removeFromFavorite (book: IBookPreview) {
-    const favorite = getFavorite()
-    setState(favorite.filter(favoriteBook => favoriteBook.isbn13 !== book.isbn13))
-    localStorage.setItem('favorite', JSON.stringify(state))
+    // const favorite = getFavorite()
+    // setState(favorite.filter(favoriteBook => favoriteBook.isbn13 !== book.isbn13))
+    // localStorage.setItem('favorite', JSON.stringify(state))
+    setState(prevState => {
+      const updatedFavorite = prevState.filter(favoriteBook => favoriteBook.isbn13 !== book.isbn13)
+      localStorage.setItem('favorite', JSON.stringify(updatedFavorite))
+      return updatedFavorite
+    })
   }
   function checkFavorite (id: string) {
     // const favorite = getFavorite()

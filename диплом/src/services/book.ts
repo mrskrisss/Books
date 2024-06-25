@@ -11,9 +11,8 @@ async function requestBook (isbn13: string) {
   return data
 }
 
-async function requestSearchBooks (params = {}) {
-  console.log(params)
-  const { data } = await client.get(searchEndpoint, { params })
+async function requestSearchBooks (query: string, page: string) {
+  const { data } = await client.get(`${searchEndpoint}${query}/${page}`)
   return data.books
 }
 

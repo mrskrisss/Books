@@ -4,6 +4,7 @@ import { ListNewBooks } from './pages/ListNewBooks'
 import { Book } from './pages/Book'
 import { Favorite } from './pages/Favorite'
 import { SearchResults } from './pages/SearchResults'
+import { Purchases } from './pages/Purchases'
 
 export const router = createBrowserRouter([
   {
@@ -24,6 +25,10 @@ export const router = createBrowserRouter([
       {
         path: '/search/:search',
         element: <SearchResults />
+      },
+      {
+        path: '/purchases',
+        element: <Purchases />
       }
     ]
   }
