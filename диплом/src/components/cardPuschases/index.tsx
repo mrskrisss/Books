@@ -1,20 +1,20 @@
 import React from 'react'
 import { useDispatch } from 'react-redux'
 import { AppDispatch } from '../../redux/store'
-import { useFavorite } from '../../hooks/useFavorites'
+import { usePurchases } from '../../hooks/usePurchases'
 import { ICardBook } from '../../types/ICardBook'
 import { toggleFavoriteById } from '../../redux/book-slice'
-import Heart from '../../icons/heart'
+import Close from '../../icons/close'
 
 import './index.scss'
 
-export const CardFavorite: React.FC<ICardBook> = (props) => {
+export const CardPurchases: React.FC<ICardBook> = (props) => {
   const dispatch = useDispatch<AppDispatch>()
-  const { removeFromFavorite, checkFavorite } = useFavorite()
+  const { removeFromPurchases } = usePurchases()
 
-  const handleClickRemoveFromFavorite = (isbn13) => {
+  const handleClickRemoveFromPurchases = (isbn13) => {
     console.log(isbn13)
-    removeFromFavorite(props)
+    removeFromPurchases(props)
     dispatch(toggleFavoriteById(isbn13))
   }
   return (
@@ -33,8 +33,8 @@ export const CardFavorite: React.FC<ICardBook> = (props) => {
                 <p className="price-favorite">{props.price}</p>
             </div>
         </div>
-        <button className="button-like" onClick={() => { handleClickRemoveFromFavorite(props.isbn13) }}>
-            <Heart fill={checkFavorite(props.isbn13) ? '#FC857F' : 'currentColor' } />
+        <button className="button-close" onClick={() => { handleClickRemoveFromPurchases(props.isbn13) }}>
+            <Close />
         </button>
     </div>
   )

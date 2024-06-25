@@ -1,7 +1,7 @@
 import React from 'react'
 import Heart from '../../icons/heart'
+import Basket from '../../icons/basket'
 import { SearchForm } from '../searchForm'
-import { CartWidget } from '../cartWidget'
 import { NavLink } from 'react-router-dom'
 // import { IBookPreview } from '../../types/ICardPreview'
 import './index.scss'
@@ -27,9 +27,11 @@ export const Header: React.FC = () => {
                 <Heart />
             </div>
           </NavLink>
-          <div className="wrapper-basket">
-              <CartWidget />
-          </div>
+          <NavLink className={navLinkClass} to="/purchases">
+            <div className="wrapper-basket">
+                <Basket />
+            </div>
+          </NavLink>
         </div>
       </div>
     </header>
