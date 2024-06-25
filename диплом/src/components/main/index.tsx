@@ -1,10 +1,6 @@
 import React from 'react'
-import './index.scss'
+import { IMain } from '../../types/IMain'
 
-type Props = {
-    children: React.ReactNode
- }
-
-export const Main: React.FC<Props> = ({ children }) => {
-  return <div className="container">{children}</div>
+export const Main: React.FC<IMain> = ({ children }) => {
+  return <div className="main">{children}</div>
 }

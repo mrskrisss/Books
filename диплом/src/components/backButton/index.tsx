@@ -1,8 +1,7 @@
-import React from 'react'
 import Back from '../../icons/back'
 import './index.scss'
 
-export const BackButton: React.FC = () => {
+export const BackButton = () => {
   const goBack = () => {
     window.history.back()
   }

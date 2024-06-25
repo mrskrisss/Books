@@ -1,15 +1,10 @@
-import React from 'react'
 import Heart from '../../icons/heart'
 import Basket from '../../icons/basket'
 import { SearchForm } from '../searchForm'
 import { NavLink } from 'react-router-dom'
-// import { IBookPreview } from '../../types/ICardPreview'
 import './index.scss'
 
-export const Header: React.FC = () => {
-  // const [cart] = useLocalStorageState<IBookPreview>('cart', {})
-
-  // const booksCount: number = Object.keys(cart || {}).length
+export const Header = () => {
   const navLinkClass = ({ isActive }) => isActive ? 'nav-link active' : 'nav-link'
 
   return (

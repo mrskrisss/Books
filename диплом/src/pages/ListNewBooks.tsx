@@ -5,7 +5,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { AppDispatch, RootState } from '../redux/store'
 import { Title } from '../components/title'
 
-export function ListNewBooks () {
+export const ListNewBooks = () => {
   const dispatch = useDispatch<AppDispatch>()
   const books = useSelector((state: RootState) => state.books.list)
   const error = useSelector((state: RootState) => state.books.error)

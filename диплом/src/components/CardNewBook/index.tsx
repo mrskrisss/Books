@@ -1,9 +1,8 @@
-import React from 'react'
 import { ICardBook } from '../../types/ICardBook'
 import { Link } from 'react-router-dom'
 import './index.scss'
 
-export const CardNewBook: React.FC<ICardBook> = (props) => {
+export const CardNewBook = (props: ICardBook) => {
   return (
     <div className="wrapper-card" id={props.isbn13}>
         <Link to={`/books/${props.isbn13}`}>

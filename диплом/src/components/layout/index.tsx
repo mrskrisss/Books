@@ -3,12 +3,12 @@ import { Header } from '../header'
 import { Footer } from '../footer'
 import { Main } from '../main'
 
-export function Layout () {
+export const Layout = () => {
   return (
     <>
         <Header />
         <Main>
-          <div className="">
+          <div className="container">
             <Outlet />
           </div>
         </Main>

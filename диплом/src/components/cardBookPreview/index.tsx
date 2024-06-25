@@ -8,7 +8,7 @@ import { usePurchases } from '../../hooks/usePurchases'
 import { BackButton } from '../backButton'
 import './index.scss'
 
-export function CardPreview (props: IBookPreview) {
+export const CardPreview = (props: IBookPreview) => {
   const dispatch = useDispatch<AppDispatch>()
   const { toggleFavorite, checkFavorite } = useFavorite()
   const { togglePurchases, checkPurchases } = usePurchases()

@@ -15,13 +15,9 @@ export function usePurchases () {
     const purchases = getPurchases()
     purchases.push(book)
     setState(purchases)
-    console.log(state)
     localStorage.setItem('purchases', JSON.stringify(purchases))
   }
   function removeFromPurchases (book: IBookPreview) {
-    // const purchases = getPurchases()
-    // setState(purchases.filter(purchasesBook => purchasesBook.isbn13 !== book.isbn13))
-    // localStorage.setItem('purchases', JSON.stringify(state))
     setState(prevState => {
       const updatedPurchases = prevState.filter(purchasesBook => purchasesBook.isbn13 !== book.isbn13)
       localStorage.setItem('purchases', JSON.stringify(updatedPurchases))
@@ -29,7 +25,6 @@ export function usePurchases () {
     })
   }
   function checkPurchases (id: string) {
-    console.log(state)
     return state.find(book => book.isbn13 === id)
   }
   function togglePurchases (book: IBookPreview) {

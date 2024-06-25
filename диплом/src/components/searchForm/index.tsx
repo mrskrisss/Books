@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom'
 import Search from '../../icons/search'
 import './index.scss'
 
-export function SearchForm () {
+export const SearchForm = () => {
   const [query, setQuery] = useState('')
   const navigate = useNavigate()
 
