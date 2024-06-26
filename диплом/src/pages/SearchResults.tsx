@@ -9,15 +9,17 @@ import { CardNewBook } from '../components/CardNewBook'
 export const SearchResults = () => {
   const dispatch = useDispatch<AppDispatch>()
   const { search } = useParams<{search: string}>()
-  const { currentPage } = useParams<{currentPage: number}>()
-  // const { currentPage } = useParams<{currentPage: string}>()
+  console.log(search)
+  const { currentPage } = useParams<{currentPage: string}>()
+  console.log(currentPage)
   const books = useSelector((state: RootState) => state.books.list)
   const error = useSelector((state: RootState) => state.books.error)
   const isLoading = useSelector((state: RootState) => state.books.isLoading)
   const pagesCount = useSelector((state: RootState) => state.books.pagesCount)
 
   useEffect(() => {
-    dispatch(fetchSearchBooks({ query: search, page: currentPage || 1 }))
+    console.log(search, currentPage)
+    dispatch(fetchSearchBooks({ query: search, page: currentPage || '1' }))
   }, [search, currentPage, dispatch])
 
   function buildPaginationScheme () {

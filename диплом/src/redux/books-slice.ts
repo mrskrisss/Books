@@ -6,7 +6,7 @@ export interface BooksState {
   list: ICardBook[],
   isLoading: boolean,
   error: string | null | undefined,
-  limit: number,
+  limit: number
   pagesCount: number
 }
 
@@ -14,7 +14,7 @@ const initialState: BooksState = {
   list: [],
   isLoading: false,
   error: null,
-  limit: 10,
+  limit: 0,
   pagesCount: 0
 }
 
@@ -30,6 +30,7 @@ export const fetchBooks = createAsyncThunk('new/fetchBooks', async (_, { rejectW
 export const fetchSearchBooks = createAsyncThunk('search/fetchSearchBooks', async (params: { query: string, page: string }, { rejectWithValue }) => {
   try {
     const { query, page } = params
+    console.log(query, page)
     return await requestSearchBooks({ q: query, p: page })
   } catch (e) {
     return rejectWithValue((e as Error).message)
@@ -59,8 +60,8 @@ const booksSlice = createSlice({
       })
       .addCase(fetchSearchBooks.fulfilled, (state, action) => {
         state.isLoading = false
-        state.list = action.payload
-        state.pagesCount = Math.ceil(action.payload.count / state.limit)
+        state.list = action.payload.books
+        state.pagesCount = Math.ceil(action.payload.total / 10)
       })
       .addCase(fetchSearchBooks.rejected, (state, action) => {
         state.isLoading = false
