@@ -3,7 +3,6 @@
     border-bottom: 1px solid #E7E7E7;
     display: flex;
     flex-direction: row;
-    justify-content: space-between;
     padding-bottom: 20px;
     margin-bottom: 20px;
 }
@@ -23,14 +22,26 @@
 }
 .card-information-favorite {
     margin-top: 20px;
-    width: 875px;
+    width: 1000px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+.field-card-left {
+    width: 65%;
+}
+.field-card-right {
+    width: 35%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
 }
 .card-name-favorite {
     margin-bottom: 8px;
     max-width: 600px;
 }
 .name-book-favorite {
-    font-size: 18px;
+    font-size: 22px;
     line-height: 32px;
     color: #313037;
     font-weight: 700;
@@ -44,10 +55,16 @@
     color: #A8A8A8;
     font-weight: 400;
 }
+.card-price-favorite {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    margin-right: 40px;
+}
 .price-favorite {
     font-weight: 700;
     line-height: 32px;
-    font-size: 18px;
+    font-size: 24px;
     color: #313037;
 }
 .button-close {
@@ -57,5 +74,6 @@
     border: none;
     display: flex;
     justify-content: flex-end;
+    margin: auto;
     cursor: pointer;
 }

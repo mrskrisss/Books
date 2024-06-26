@@ -1,0 +1,21 @@
+.wrap-counter {
+    max-width: 130px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+.btn-counter {
+    width: 45px;
+    height: 45px;
+    background-color: #FFFFFF;
+    border: none;
+}
+.value-counter {
+    width: 45px;
+    height: 45px;
+    font-size: 24px;
+    font-weight: 700;
+    color: #313037;
+    text-align: center;
+    padding: 6px 0 6px;
+}
