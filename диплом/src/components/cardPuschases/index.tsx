@@ -12,30 +12,27 @@ export const CardPurchases = (props: ICardBook) => {
   const { removeFromPurchases } = usePurchases()
 
   const handleClickRemoveFromPurchases = (isbn13) => {
-    console.log(isbn13)
     removeFromPurchases(props)
     dispatch(toggleFavoriteById(isbn13))
   }
   return (
-    <div className="wrapper-card-favorite">
-        <div className="wrap-img-favorite">
-            <img className="img-favorite" src={props.image} />
+    <div className="wrapper-card-purchases">
+        <div className="wrap-img-purchases">
+            <img className="img-purchases" src={props.image} />
         </div>
-        <div className="card-information-favorite">
+        <div className="card-information-purchases">
             <div className="field-card-left">
-                <div className="card-name-favorite">
-                    <p className="name-book-favorite">{props.title}</p>
+                <div className="card-name-purchases">
+                    <p className="name-book-purchases">{props.title}</p>
                 </div>
-                <div className="card-description-favorite">
-                    <p className="author-and-year-favorite">{props.subtitle}</p>
+                <div className="card-description-purchases">
+                    <p className="author-and-year-purchases">{props.subtitle}</p>
                 </div>
-                <div className="card-counter">
-                    <Counter />
-                </div>
+                <Counter key={props.isbn13} isbn13={props.isbn13} image={props.image} title={props.title} price={props.price} name={props.name} message={props.message} />
             </div>
             <div className="field-card-right">
-                <div className="card-price-favorite">
-                    <p className="price-favorite">{props.price}</p>
+                <div className="card-price-purchases">
+                    <p className="price-purchases">{props.price}</p>
                 </div>
                 <button className="button-close" onClick={() => { handleClickRemoveFromPurchases(props.isbn13) }}>
                     <Close />

@@ -3,38 +3,23 @@ import { useParams, NavLink } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
 import { AppDispatch, RootState } from '../redux/store'
 import { fetchSearchBooks } from '../redux/books-slice'
-import { Title } from '../components/title'
 import { CardNewBook } from '../components/CardNewBook'
+import { buildPaginationScheme } from '../utils/buildPaginationScheme'
+import { Title } from '../components/title'
+import './SearchResults.scss'
 
 export const SearchResults = () => {
   const dispatch = useDispatch<AppDispatch>()
   const { search } = useParams<{search: string}>()
-  console.log(search)
   const { currentPage } = useParams<{currentPage: string}>()
-  console.log(currentPage)
   const books = useSelector((state: RootState) => state.books.list)
   const error = useSelector((state: RootState) => state.books.error)
   const isLoading = useSelector((state: RootState) => state.books.isLoading)
   const pagesCount = useSelector((state: RootState) => state.books.pagesCount)
 
   useEffect(() => {
-    console.log(search, currentPage)
     dispatch(fetchSearchBooks({ query: search, page: currentPage || '1' }))
   }, [search, currentPage, dispatch])
-
-  function buildPaginationScheme () {
-    const prevPageNumber = +currentPage - 1 // предполагаемая предыдущая страница, может получиться отрицательной
-    const nextPageNumber = +currentPage + 1 // предполагаемая следующая страница, может получиться больше максимальной
-    const scheme = [1, prevPageNumber, +currentPage, nextPageNumber, pagesCount] // строим схему
-    const filteredScheme = scheme.filter(item => item > 0 && item <= pagesCount) // чистим те, которые меньше 0 или больше pagesCounter
-    const set = new Set(filteredScheme) // удаляем дубли
-    const result = Array.from(set) // обратно приводим к массиву
-
-    if (result[0] + 1 !== result[1]) result.splice(1, 0, '...') // если между первым и вторым элементом пропуск, вставляем ...
-    if (result.at(-2) + 1 !== result.at(-1)) result.splice(result.length - 1, 0, '...') // если между последним и предпоследним пропуск, вставляем ...
-
-    return result
-  }
 
   function renderBooks () {
     if (!Array.isArray(books)) return <div>Not Found</div>
@@ -49,7 +34,7 @@ export const SearchResults = () => {
   function renderPagination () {
     if (!pagesCount) return null
 
-    const paginationScheme = buildPaginationScheme()
+    const paginationScheme = buildPaginationScheme(currentPage, pagesCount)
 
     return (
       <ul className="pagination">
@@ -76,9 +61,11 @@ export const SearchResults = () => {
 
   return (
     <>
-        <Title>«{search}» Search results</Title>
-        <div className="wrapper-cards" style={{ display: 'flex', flexDirection: 'row', flexWrap: 'wrap', justifyContent: 'space-around' }} >
+      <Title>«{search}» Search results</Title>
+      <div className="wrapper-cards" style={{ display: 'flex', flexDirection: 'row', flexWrap: 'wrap', justifyContent: 'space-around' }} >
         {renderBooks()}
+      </div>
+      <div className="wrapper-pagination">
         {renderPagination()}
       </div>
     </>

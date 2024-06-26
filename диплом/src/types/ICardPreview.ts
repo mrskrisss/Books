@@ -16,5 +16,5 @@ export interface IBookPreview {
     name?: string
     message?: string
     isFavorite?: boolean
-    page?: string
+    counter?: number
 }

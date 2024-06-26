@@ -1,29 +1,40 @@
-// import React from 'react'
+import { NavLink, useParams } from 'react-router-dom'
+import { useSelector } from 'react-redux'
+import { RootState } from '../../redux/store'
+import { buildPaginationScheme } from '../../utils/buildPaginationScheme'
 
-// interface PaginationProps {
-//   currentPage: number;
-//   totalPages: number;
-//   onPageChange: (page: number) => void;
-// }
+interface IPagination {
+  route: string
+}
 
-// export const Pagination: React.FC<PaginationProps> = ({
-//   currentPage,
-//   totalPages,
-//   onPageChange
-// }) => {
-//   const pageNumbers = Array.from({ length: totalPages }, (_, i) => i + 1)
+export function Pagination (props: IPagination) {
+  const { page: currentPage } = useParams()
+  // const { search } = useParams<{search: string}>()
+  const pagesCount = useSelector((state: RootState) => state.books.pagesCount)
 
-//   return (
-//     <div className="pagination">
-//       {pageNumbers.map((page) => (
-//         <button
-//           key={page}
-//           className={`page-link ${page === currentPage ? 'active' : ''}`}
-//           onClick={() => onPageChange(page)}
-//         >
-//           {page}
-//         </button>
-//       ))}
-//     </div>
-//   )
-// }
+  if (!pagesCount) return null
+
+  const paginationScheme = buildPaginationScheme(currentPage, pagesCount)
+
+  return (
+    <ul className="pagination">
+      {paginationScheme.map((item, index) => {
+        if (item === '...') {
+          return (
+            <li className="page-item" key={index}>
+              <span className="page-link">...</span>
+            </li>
+          )
+        }
+
+        return (
+          <li className="page-item" key={index}>
+            <NavLink className="page-link" to={`/search/${props.route}/${item}`}>
+              {item}
+            </NavLink>
+          </li>
+        )
+      })}
+    </ul>
+  )
+}

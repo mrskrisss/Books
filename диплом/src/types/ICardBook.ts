@@ -10,4 +10,5 @@ export interface ICardBook extends Error {
     query?: string
     isFavorite?: boolean
     page?: string
+    counter?: number
 }

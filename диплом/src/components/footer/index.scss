@@ -1,10 +1,8 @@
 .footer {
     padding: 20px 0 20px;
     border-top: 1px solid #E7E7E7;
-    position: absolute;
-    left: 0;
-    bottom: 0;
     width: 100%;
+    flex-shrink: 0;
 }
 .footer-container {
     max-width: 1170px;

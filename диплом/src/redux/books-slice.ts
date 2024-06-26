@@ -14,7 +14,7 @@ const initialState: BooksState = {
   list: [],
   isLoading: false,
   error: null,
-  limit: 0,
+  limit: 10,
   pagesCount: 0
 }
 
@@ -30,8 +30,7 @@ export const fetchBooks = createAsyncThunk('new/fetchBooks', async (_, { rejectW
 export const fetchSearchBooks = createAsyncThunk('search/fetchSearchBooks', async (params: { query: string, page: string }, { rejectWithValue }) => {
   try {
     const { query, page } = params
-    console.log(query, page)
-    return await requestSearchBooks({ q: query, p: page })
+    return await requestSearchBooks(query, page)
   } catch (e) {
     return rejectWithValue((e as Error).message)
   }
@@ -40,8 +39,7 @@ export const fetchSearchBooks = createAsyncThunk('search/fetchSearchBooks', asyn
 const booksSlice = createSlice({
   name: 'books',
   initialState,
-  reducers: {
-  },
+  reducers: {},
   extraReducers: builder => {
     builder
       .addCase(fetchBooks.pending, state => {
@@ -49,6 +47,7 @@ const booksSlice = createSlice({
       })
       .addCase(fetchBooks.fulfilled, (state, action) => {
         state.isLoading = false
+        console.log(state.list)
         state.list = action.payload.books
       })
       .addCase(fetchBooks.rejected, (state, action) => {
@@ -61,7 +60,7 @@ const booksSlice = createSlice({
       .addCase(fetchSearchBooks.fulfilled, (state, action) => {
         state.isLoading = false
         state.list = action.payload.books
-        state.pagesCount = Math.ceil(action.payload.total / 10)
+        state.pagesCount = Math.ceil(action.payload.total / state.limit)
       })
       .addCase(fetchSearchBooks.rejected, (state, action) => {
         state.isLoading = false

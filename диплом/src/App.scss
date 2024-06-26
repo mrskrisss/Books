@@ -9,8 +9,13 @@ html {
     font-family: "Bebas Neue", sans-serif;
     font-size: 16px;
 } 
+body {
+    display: flex;
+    flex-direction: column;
+}
 .container {
     max-width: 1170px;
     margin: auto;
     padding: 15px;
+    flex: 1 0 auto;
 }

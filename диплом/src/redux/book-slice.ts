@@ -6,12 +6,14 @@ export interface BookState {
   item: { [isbn13: string]: IBookPreview & { isFavorite: boolean } },
   isLoading: boolean,
   error: string | null | undefined
+  value: number
 }
 
 const initialState: BookState = {
   item: {},
   isLoading: false,
-  error: null
+  error: null,
+  value: 0
 }
 
 // Thunks
@@ -28,17 +30,13 @@ const bookSlice = createSlice({
   initialState,
   reducers: {
     toggleFavoriteById: (state, action) => {
-      const isbn13 = action.payload
-      console.log(action.payload.isbn13)
-      const booksFavorite = state.item[isbn13]
-      console.log(booksFavorite)
-      if (booksFavorite) {
-        state.item[isbn13] = {
-          ...booksFavorite,
-          isFavorite: !booksFavorite.isFavorite
-        }
-        console.log(booksFavorite.isFavorite)
-      }
+      state.item = action.payload
+    },
+    incrementPurchases: (state, action) => {
+      state.value += action.payload
+    },
+    decrementPurchases: (state, action) => {
+      state.value -= action.payload
     }
   },
   extraReducers: builder => {
@@ -57,5 +55,5 @@ const bookSlice = createSlice({
   }
 })
 
-export const { toggleFavoriteById } = bookSlice.actions
+export const { toggleFavoriteById, incrementPurchases, decrementPurchases } = bookSlice.actions
 export const bookReducer = bookSlice.reducer

@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import { IBookPreview } from '../types/ICardPreview'
 
-export function usePurchases () {
+export const usePurchases = () => {
   const [state, setState] = useState(getPurchases())
 
   function getPurchases () {

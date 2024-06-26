@@ -1,7 +1,7 @@
+import { NavLink } from 'react-router-dom'
+import { SearchForm } from '../searchForm'
 import Heart from '../../icons/heart'
 import Basket from '../../icons/basket'
-import { SearchForm } from '../searchForm'
-import { NavLink } from 'react-router-dom'
 import './index.scss'
 
 export const Header = () => {

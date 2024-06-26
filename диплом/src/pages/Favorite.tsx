@@ -11,7 +11,7 @@ export const Favorite = () => {
   const [state, setState] = useState(getFavorite())
   const error = useSelector((state: RootState) => state.books.error)
   const isLoading = useSelector((state: RootState) => state.books.isLoading)
-  
+
   useEffect(() => {
     setState(getFavorite())
   }, [])
@@ -32,7 +32,7 @@ export const Favorite = () => {
         <BackButton />
       </div>
       <Title>Favorites</Title>
-      <div className="wrapper-cards" style={{ padding: '10px' }}>
+      <div className="wrapper-cards" style={{ padding: '10px', height: '72vh' }}>
         {renderBooks()}
       </div>
     </>

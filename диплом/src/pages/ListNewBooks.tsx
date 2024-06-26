@@ -1,8 +1,8 @@
 import { useEffect } from 'react'
-import { fetchBooks } from '../redux/books-slice'
-import { CardNewBook } from '../components/CardNewBook'
 import { useDispatch, useSelector } from 'react-redux'
 import { AppDispatch, RootState } from '../redux/store'
+import { fetchBooks } from '../redux/books-slice'
+import { CardNewBook } from '../components/CardNewBook'
 import { Title } from '../components/title'
 
 export const ListNewBooks = () => {
