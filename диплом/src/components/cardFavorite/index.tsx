@@ -4,7 +4,6 @@ import { useFavorite } from '../../hooks/useFavorites'
 import { ICardBook } from '../../types/ICardBook'
 import { toggleFavoriteById } from '../../redux/book-slice'
 import Heart from '../../icons/heart'
-
 import './index.scss'
 
 export const CardFavorite = (props: ICardBook) => {
@@ -12,7 +11,6 @@ export const CardFavorite = (props: ICardBook) => {
   const { removeFromFavorite, checkFavorite } = useFavorite()
 
   const handleClickRemoveFromFavorite = (isbn13) => {
-    console.log(isbn13)
     removeFromFavorite(props)
     dispatch(toggleFavoriteById(isbn13))
   }

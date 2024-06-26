@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import { IBookPreview } from '../types/ICardPreview'
 
-export function useFavorite () {
+export const useFavorite = () => {
   const [state, setState] = useState(getFavorite())
 
   function getFavorite () {

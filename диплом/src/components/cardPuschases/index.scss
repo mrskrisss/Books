@@ -1,4 +1,4 @@
-.wrapper-card-favorite {
+.wrapper-card-purchases {
     max-width: 100%;
     border-bottom: 1px solid #E7E7E7;
     display: flex;
@@ -6,21 +6,21 @@
     padding-bottom: 20px;
     margin-bottom: 20px;
 }
-.wrapper-card-favorite:last-child{
+.wrapper-card-purchases:last-child{
     margin-bottom: 0px;
     border-bottom: 1px solid #FFFFFF;
 }
-.wrap-img-favorite {
+.wrap-img-purchases {
     max-width: 140px;
     background-color: aliceblue;
     overflow: hidden;
     margin-right: 30px;
 }
-.img-favorite {
+.img-purchases {
     width: 100%;
     height: auto;
 }
-.card-information-favorite {
+.card-information-purchases {
     margin-top: 20px;
     width: 1000px;
     display: flex;
@@ -36,32 +36,32 @@
     align-items: center;
     justify-content: space-between;
 }
-.card-name-favorite {
+.card-name-purchases {
     margin-bottom: 8px;
     max-width: 600px;
 }
-.name-book-favorite {
+.name-book-purchases {
     font-size: 22px;
     line-height: 32px;
     color: #313037;
     font-weight: 700;
 }
-.card-description-favorite {
+.card-description-purchases {
     margin-bottom: 24px;
 }
-.author-and-year-favorite {
+.author-and-year-purchases {
     font-size: 14px;
     line-height: 24px;
     color: #A8A8A8;
     font-weight: 400;
 }
-.card-price-favorite {
+.card-price-purchases {
     display: flex;
     align-items: center;
     justify-content: flex-end;
     margin-right: 40px;
 }
-.price-favorite {
+.price-purchases {
     font-weight: 700;
     line-height: 32px;
     font-size: 24px;

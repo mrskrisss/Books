@@ -1,5 +1,5 @@
-import { ICardBook } from '../../types/ICardBook'
 import { Link } from 'react-router-dom'
+import { ICardBook } from '../../types/ICardBook'
 import './index.scss'
 
 export const CardNewBook = (props: ICardBook) => {

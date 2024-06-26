@@ -6,18 +6,20 @@
 }
 .button-back {
     max-width: 24px;
+    margin-bottom: 20px;
 }
 .title-card-preview {
     font-size: 56px;
     line-height: 55px;
     font-weight: 700;
     color: #313037;
+    margin-bottom: 20px;
 }
 .information-card-preview {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    margin-bottom: 30px;
+    margin-bottom: 60px;
 }
 .wrap-img-card-preview {
     width: 340px;
@@ -87,11 +89,23 @@
 }
 .button-add-cart {
     width: 100%;
-    height: auto;
+    height: 100%;
     background-color: #313037;
     color: #FFFFFF;
     border: none;
     cursor: pointer;
+}
+.wrap-button:hover {
+    background-color: gray;
+}
+.button-add-cart:hover {
+    background-color: gray;
+}
+.wrap-button:focus {
+    background-color: gray;
+}
+.button-add-cart:focus {
+    background-color: gray;
 }
 .description-book {
     width: 100%;
@@ -101,4 +115,5 @@
     font-weight: 400;
     line-height: 25px;
     color: #313037;
+    margin-bottom: 70px;
 }

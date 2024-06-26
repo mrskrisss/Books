@@ -1,26 +1,24 @@
 import { useDispatch } from 'react-redux'
 import { AppDispatch } from '../../redux/store'
 import { IBookPreview } from '../../types/ICardPreview'
-import { toggleFavoriteById } from '../../redux/book-slice'
-import Heart from '../../icons/heart'
 import { useFavorite } from '../../hooks/useFavorites'
 import { usePurchases } from '../../hooks/usePurchases'
 import { BackButton } from '../backButton'
+import { toggleFavoriteById } from '../../redux/book-slice'
+import Heart from '../../icons/heart'
 import './index.scss'
 
 export const CardPreview = (props: IBookPreview) => {
   const dispatch = useDispatch<AppDispatch>()
   const { toggleFavorite, checkFavorite } = useFavorite()
-  const { togglePurchases, checkPurchases } = usePurchases()
+  const { togglePurchases } = usePurchases()
 
   const handleClickHeart = (isbn13) => {
-    console.log(isbn13)
     toggleFavorite(props)
     dispatch(toggleFavoriteById(isbn13))
   }
 
   const handleClickAddToCard = (isbn13) => {
-    console.log(isbn13)
     togglePurchases(props)
     dispatch(toggleFavoriteById(isbn13))
   }

@@ -27,6 +27,10 @@ export const router = createBrowserRouter([
         element: <SearchResults />
       },
       {
+        path: '/search/:search/:currentPage',
+        element: <SearchResults />
+      },
+      {
         path: '/purchases',
         element: <Purchases />
       }
