@@ -3,7 +3,7 @@ import { requestBook } from '../services/book'
 import { IBookPreview } from '../types/ICardPreview'
 
 export interface BookState {
-  item: { [isbn13: string]: IBookPreview & { isFavorite: boolean } },
+  item: IBookPreview,
   isLoading: boolean,
   error: string | null | undefined
   value: number
@@ -28,17 +28,7 @@ export const fetchBook = createAsyncThunk('books/fetchBook', async (isbn13: stri
 const bookSlice = createSlice({
   name: 'book',
   initialState,
-  reducers: {
-    toggleFavoriteById: (state, action) => {
-      state.item = action.payload
-    },
-    incrementPurchases: (state, action) => {
-      state.value += action.payload
-    },
-    decrementPurchases: (state, action) => {
-      state.value -= action.payload
-    }
-  },
+  reducers: {},
   extraReducers: builder => {
     builder
       .addCase(fetchBook.pending, state => {
@@ -55,5 +45,4 @@ const bookSlice = createSlice({
   }
 })
 
-export const { toggleFavoriteById, incrementPurchases, decrementPurchases } = bookSlice.actions
 export const bookReducer = bookSlice.reducer
