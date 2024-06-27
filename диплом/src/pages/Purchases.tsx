@@ -3,28 +3,15 @@ import { useSelector } from 'react-redux'
 import { RootState } from '../redux/store'
 import { CardPurchases } from '../components/cardPuschases'
 import { usePurchases } from '../hooks/usePurchases'
-import { useCounter } from '../hooks/useCounter'
 import { BackButton } from '../components/backButton'
 import { AmountBooks } from '../components/amountBooks'
-import { ICardBook } from '../types/ICardBook'
 import { Title } from '../components/title'
 
-export const Purchases = (props: ICardBook) => {
+export const Purchases = () => {
   const { getPurchases } = usePurchases()
-  const { getCounter } = useCounter(props)
   const [state, setState] = useState(getPurchases())
   const error = useSelector((state: RootState) => state.books.error)
   const isLoading = useSelector((state: RootState) => state.books.isLoading)
-
-  const purchases = getPurchases()
-  const numberOfPurchases = purchases.length
-  console.log(numberOfPurchases)
-
-  const numberOfCopies = getCounter()
-  console.log(numberOfCopies)
-
-  const total = numberOfPurchases * numberOfCopies
-  console.log(total)
 
   useEffect(() => {
     setState(getPurchases())
