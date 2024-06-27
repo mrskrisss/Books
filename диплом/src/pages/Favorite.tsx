@@ -12,6 +12,8 @@ export const Favorite = () => {
   const error = useSelector((state: RootState) => state.books.error)
   const isLoading = useSelector((state: RootState) => state.books.isLoading)
 
+  console.log(getFavorite())
+
   useEffect(() => {
     setState(getFavorite())
   }, [])

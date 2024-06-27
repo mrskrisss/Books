@@ -3,5 +3,5 @@ import { baseEndpoint } from './endpoint'
 
 export const client = axios.create({
   baseURL: baseEndpoint,
-  timeout: 5000
+  timeout: 30000
 })
