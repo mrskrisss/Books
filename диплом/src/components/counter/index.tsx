@@ -21,14 +21,6 @@ export const Counter = (props: ICardBook) => {
     decrementCounter(props)
   }
 
-  const getNumberOfCopies = () => {
-    const numberOfCopies = getCounter()
-    console.log(numberOfCopies)
-    return numberOfCopies
-  }
-  const numberOfCopies = getCounter()
-  console.log(numberOfCopies)
-
   return (
     <div>
       <button className="btn-counter decrement" onClick={handleClickDecrement}>

@@ -54,9 +54,15 @@
 }
 .check-out {
     width: 100%;
-    height: auto;
+    height: 100%;
     background-color: #313037;
     color: #FFFFFF;
     border: none;
     cursor: pointer;
+}
+.check-out:hover {
+    background-color: gray;
+}
+.button-check-out:hover {
+    background-color: gray;
 }
