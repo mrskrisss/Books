@@ -2,6 +2,7 @@ import { NavLink } from 'react-router-dom'
 import { SearchForm } from '../searchForm'
 import Heart from '../../icons/heart'
 import Basket from '../../icons/basket'
+import Circle from '../../icons/circle'
 import './index.scss'
 
 export const Header = () => {
@@ -20,6 +21,9 @@ export const Header = () => {
           <NavLink className={navLinkClass} to="/favorite">
             <div className="wrapper-heart">
                 <Heart />
+                <div className="badge" id="badge">
+                <Circle />
+                </div>
             </div>
           </NavLink>
           <NavLink className={navLinkClass} to="/purchases">

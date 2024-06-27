@@ -23,6 +23,13 @@
 .wrapper-heart {
     margin: 0 15px 0;
     color: #313037;
+    position: relative;
+}
+.badge {
+    color: #FC857F;
+    position: absolute;
+    top: -10px;
+    right: -10px;
 }
 .wrapper-basket {
     margin: 0 15px 0;
