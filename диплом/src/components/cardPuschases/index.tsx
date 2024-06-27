@@ -1,20 +1,16 @@
-import { useDispatch } from 'react-redux'
-import { AppDispatch } from '../../redux/store'
 import { usePurchases } from '../../hooks/usePurchases'
 import { ICardBook } from '../../types/ICardBook'
-import { toggleFavoriteById } from '../../redux/book-slice'
 import { Counter } from '../counter'
 import Close from '../../icons/close'
 import './index.scss'
 
 export const CardPurchases = (props: ICardBook) => {
-  const dispatch = useDispatch<AppDispatch>()
   const { removeFromPurchases } = usePurchases()
 
   const handleClickRemoveFromPurchases = (isbn13) => {
     removeFromPurchases(props)
-    dispatch(toggleFavoriteById(isbn13))
   }
+
   return (
     <div className="wrapper-card-purchases">
         <div className="wrap-img-purchases">

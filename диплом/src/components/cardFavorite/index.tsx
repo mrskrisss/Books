@@ -1,19 +1,15 @@
-import { useDispatch } from 'react-redux'
-import { AppDispatch } from '../../redux/store'
 import { useFavorite } from '../../hooks/useFavorites'
 import { ICardBook } from '../../types/ICardBook'
-import { toggleFavoriteById } from '../../redux/book-slice'
 import Heart from '../../icons/heart'
 import './index.scss'
 
 export const CardFavorite = (props: ICardBook) => {
-  const dispatch = useDispatch<AppDispatch>()
   const { removeFromFavorite, checkFavorite } = useFavorite()
 
   const handleClickRemoveFromFavorite = (isbn13) => {
     removeFromFavorite(props)
-    dispatch(toggleFavoriteById(isbn13))
   }
+
   return (
     <div className="wrapper-card-favorite">
         <div className="wrap-img-favorite">
